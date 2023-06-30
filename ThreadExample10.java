@@ -1,4 +1,4 @@
-public class ThreadExample9 {
+public class ThreadExample10 {
 
     public static void sleep(long millis) {
         try {
@@ -11,8 +11,8 @@ public class ThreadExample9 {
 
     public static void main(String[] args) {
         Runnable r = () -> {
-            while (true) {
-                sleep(1000);
+            for (int i = 0; i < 5; i++) {
+                sleep(100);
                 System.out.println("Running");
 
             }
@@ -22,6 +22,12 @@ public class ThreadExample9 {
         thread.setDaemon(true);
         thread.start();
         sleep(3000);
+        try {
+            thread.join();
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 }
